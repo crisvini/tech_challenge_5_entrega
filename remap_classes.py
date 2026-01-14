@@ -1,10 +1,9 @@
 from pathlib import Path
 
-BASE = Path(".")  # raiz onde tem train/ valid/ test/
+BASE = Path(".")
 
 SPLITS = ["train", "valid", "test"]
 
-# Remapeamento do seu cenário
 # Knife: era 2 -> vira 0
 # Scissors: era 4 -> vira 1
 REMAP = {2: 0, 4: 1}
@@ -34,7 +33,6 @@ def fix_labels(split: str):
                 parts[0] = str(REMAP[cls])
                 out_lines.append(" ".join(parts))
             else:
-                # se sobrou alguma classe estranha, descartamos
                 dropped += 1
 
         new_text = "\n".join(out_lines) + ("\n" if out_lines else "")

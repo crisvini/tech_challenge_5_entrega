@@ -1,6 +1,6 @@
 from pathlib import Path
 
-BASE = Path(".")  # raiz do dataset
+BASE = Path(".")  
 SPLITS = ["train", "valid", "test"]
 IMG_EXTS = {".jpg", ".jpeg", ".png", ".bmp", ".webp"}
 
@@ -24,14 +24,12 @@ for split in SPLITS:
 
         name_lower = img.stem.lower()
 
-        # se o nome contém knife ou scissors → NÃO é negativo
         if any(k in name_lower for k in KEYWORDS_POS):
             skipped += 1
             continue
 
         lbl = lbl_dir / f"{img.stem}.txt"
 
-        # cria txt vazio só se não existir
         if not lbl.exists():
             lbl.write_text("", encoding="utf-8")
             created += 1

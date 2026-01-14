@@ -3,7 +3,7 @@ from ultralytics import YOLO
 import json
 from datetime import datetime
 
-import cv2 
+import cv2
 
 BASE = Path(__file__).resolve().parent
 INPUTS = BASE / "inputs"
@@ -17,8 +17,8 @@ CLASS_MAP = {
     1: "scissors",
 }
 
-ALERT_MIN_TOTAL_DETECTIONS = 3 
-TIME_ROUND_DECIMALS = 1 
+ALERT_MIN_TOTAL_DETECTIONS = 3
+TIME_ROUND_DECIMALS = 1
 
 
 def get_video_fps(video_path: Path) -> float:
@@ -152,7 +152,8 @@ def main():
             source=str(video),
             imgsz=960,
             conf=0.25,
-            device="cpu",  # ✅ CPU only
+            device="cpu",  # para processadores
+            # device=0, # para placas de vídeo NVIDIA
             save=True,
             project=str(BASE / "runs"),
             name="predict_inputs",
