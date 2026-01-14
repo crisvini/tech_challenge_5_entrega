@@ -5,9 +5,9 @@ BASE = Path(".")  # raiz onde tem train/ valid/ test/
 SPLITS = ["train", "valid", "test"]
 
 # Remapeamento do seu cenário
-# Scissors: era 1 -> vira 0
-# Knife: era 2 -> vira 1
-REMAP = {1: 0, 2: 1}
+# Knife: era 2 -> vira 0
+# Scissors: era 4 -> vira 1
+REMAP = {2: 0, 4: 1}
 
 def fix_labels(split: str):
     labels_dir = BASE / split / "labels"
