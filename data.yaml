@@ -1,0 +1,12 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+names: ['Knife', 'Scissors']
+
+roboflow:
+  workspace: fiap-vphyc
+  project: dataset-facas-e-tesouras
+  version: 1
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/fiap-vphyc/dataset-facas-e-tesouras/dataset/1
