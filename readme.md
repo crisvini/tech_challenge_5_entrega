@@ -85,3 +85,7 @@ pip install ultralytics
 ---
 
 ## 🚀 Execução
+
+```bash
+python test_inputs.py
+```
