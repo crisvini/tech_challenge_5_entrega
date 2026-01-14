@@ -1,41 +1,35 @@
 from pathlib import Path
 from ultralytics import YOLO
 
+
 def main():
     BASE = Path(__file__).resolve().parent
-    DATA = BASE / "data.yaml"   # seu yaml na raiz do projeto/dataset
+    DATA = BASE / "data.yaml"
 
-    # Modelo base (transfer learning)
-    model = YOLO("yolov8n.pt")  # leve e rápido (recomendado pra 8GB)
+    model = YOLO("yolov8n.pt")
 
     results = model.train(
         data=str(DATA),
-
-        # --- Qualidade p/ objetos pequenos ---
-        imgsz=960,          # bom p/ faca/tesoura pequena
+        imgsz=960,
         epochs=120,
-        close_mosaic=20,    # estabiliza no final
+        close_mosaic=20,
         patience=50,
-
-        # --- GPU / performance no Windows ---
-        device=0,           # usa a RTX (CUDA)
-        batch=8,            # se der OOM, diminui pra 4
-        workers=0,          # evita problemas no Windows
-        cache=True,         # ajuda performance (se RAM/SSD aguentar)
-        amp=True,           # mixed precision (normalmente melhora e economiza VRAM)
-
-        # --- Projeto/saída ---
+        device="cpu",  # para processadores
+        # device=0, # para placas de vídeo NVIDIA
+        batch=8,
+        workers=0,
+        cache=True,
+        amp=True,
         project=str(BASE / "runs"),
         name="yolov8n_scissors_knife_img960",
         exist_ok=True,
-
-        # --- Detalhes úteis ---
         plots=True,
         verbose=True,
     )
 
     print("Treino finalizado!")
     print("Melhor peso:", results.save_dir / "weights" / "best.pt")
+
 
 if __name__ == "__main__":
     main()

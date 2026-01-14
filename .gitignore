@@ -17,4 +17,6 @@ __pycache__/
 # variáveis de ambiente
 .env
 inputs/
-outputs/
+
+alerts/
+runs/predict_inputs/
