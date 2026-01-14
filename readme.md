@@ -63,6 +63,18 @@ Foram utilizados scripts Python para:
 
 ---
 
+## ⚠️ Sistema de Alertas
+
+Durante a execução do projeto, sempre que um **objeto cortante** é detectado no vídeo:
+
+- Um **alerta é exibido em tempo real no terminal**, contendo informações sobre a detecção;
+- O alerta também é **persistido em arquivo JSON** na pasta **`alerts/`**, permitindo posterior análise e auditoria;
+- Cada arquivo de alerta registra dados relevantes da detecção, como classe identificada, timestamp e origem do vídeo.
+
+Essa abordagem simula o comportamento de um sistema real de monitoramento, no qual os eventos críticos são tanto exibidos em tempo real quanto armazenados para rastreabilidade.
+
+---
+
 ## 🚀 Instalação
 
 ```bash
